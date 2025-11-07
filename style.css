@@ -23,17 +23,26 @@ body{
 table{
     width: 100%;
     border-collapse: collapse;
+     border: 1px solid #7d7979;
 }
+.borderTable{
+ border: 1px solid #7d7979;
+ 
+}
+
 th, td {
-    border: 1px solid #7d7979;
+   
     padding: 0.8rem;
     text-align: left;
 }
 button{
     background-color: rgb(194, 194, 185);
-    padding: 1rem;
+    padding: .4rem;
     font-size: 1rem;
 }
 .green{
     background-color: rgb(150, 226, 150);
+}
+.red{
+    background-color: rgb(255, 203, 203);
 }

@@ -60,7 +60,7 @@ function displayBook(book) {
           btnToggle.classList.add('green');
         } else{
           btnToggle.textContent = 'Not Read';
-          btnToggle.classList.add('green');
+          btnToggle.classList.add('red');
         };
         btnRemove.textContent = 'Delete';
 
@@ -164,35 +164,42 @@ buttonsRemoveBook.forEach(button => {
  }
 
 
-//  function toggleStatus() {
-//     const buttonsToggleStatus = document.querySelectorAll('.btnToggle');
-//  console.log(buttonsToggleStatus);
+ function toggleStatus() {
+    const buttonsToggleStatus = document.querySelectorAll('.btnToggle');
+ console.log(buttonsToggleStatus);
 
 
-// buttonsToggleStatus.forEach(button => {
-//   button.addEventListener('click', (e) => {
+buttonsToggleStatus.forEach(button => {
+  button.addEventListener('click', (e) => {
      
-//     const clickedBtn = e.currentTarget;
+    const clickedBtn = e.currentTarget;
 
-//     const dataset = clickedBtn.dataset; 
-//     const clickedBtnId = dataset.readId;
+    const dataset = clickedBtn.dataset; 
+    const clickedBtnId = dataset.readId;
 
-//    const toggledBook = getBook(clickedBtnId);
-//     toggledBook.toggleStatus();
+   const toggledBook = getBook(clickedBtnId);
+    toggledBook.toggleStatus();
       
-//      console.log(toggledBook);
+ if(toggledBook.read == true){
+          clickedBtn.textContent = 'Read';
+          clickedBtn.classList.remove('red');
+          clickedBtn.classList.add('green');
+        } else{
+          clickedBtn.classList.remove('green');
+          clickedBtn.textContent = 'Not Read';
+          clickedBtn.classList.add('red');
+        };
+     
+ 
 
-//        const toggled = document.querySelector(`[data-read="${clickedBtnId}"]`);
-
-//      console.log(toggled);
-//       toggled.textContent = toggledBook.read;
+     
         
      
-//   });
-// });
-//  }
+  });
+});
+ }
 
 displayLibrary();
   
-  // toggleStatus();
+toggleStatus();
   removeBook();
