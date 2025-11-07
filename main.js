@@ -85,6 +85,8 @@ function displayBook(book) {
         row.appendChild(dataRemove);
          
         myTable.appendChild(row);
+        toggleStatus();
+  removeBook();
         
         // console.log("ff");
          
