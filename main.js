@@ -4,6 +4,7 @@ let library = [];
 const myTable = document.querySelector('#myTable');
 // console.log(myTable);
 
+
  
 
 function Book(author, title, pages, read) {
@@ -16,6 +17,19 @@ function Book(author, title, pages, read) {
     this.pages = pages;
     this.read = read;
 }
+
+Book.prototype.toggleStatus = function() {
+
+  let isReadBook = this.read;
+       if (isReadBook == true){
+        this.read = false;
+        
+       }
+       else {
+        this.read = true;
+       }
+       
+      };
 
 function addBooktoLibrary(author, title, pages, read) {
     const book = new Book(author, title, pages, read);
@@ -50,25 +64,37 @@ function displayBook(book) {
         row.dataset.id = book.id;
         btnRemove.dataset.btnId = book.id;
         btnRemove.classList.add('btnRemove');
+        btnToggle.classList.add('btnToggle');
+        btnToggle.dataset.readId = book.id;
+        dataRead.dataset.read = book.id;
 
         row.appendChild(dataAuthor);
         row.appendChild(dataTitle);
         row.appendChild(dataPages);
         row.appendChild(dataRead);
+        
+
 
         dataToggle.appendChild(btnToggle);
+
         row.appendChild(dataToggle);
+       
 
         dataRemove.appendChild(btnRemove);
+         
         row.appendChild(dataRemove);
-
+         
         myTable.appendChild(row);
-
+        
         // console.log("ff");
+         
+     
 }
-
+ 
+ 
 function displayLibrary() {
     library.forEach(book => displayBook(book));
+ 
 }
 
 
@@ -83,6 +109,8 @@ form.addEventListener('submit', function(event) {
   const myBook = new Book(newAuthor, newTitle, newNumOfPages, newIsRead);
   displayBook(myBook);
   library.push(myBook);
+  removeBook();
+  toggleStatus();
 });
 
  
@@ -95,9 +123,10 @@ addBooktoLibrary("Bentino Massaro", "Me", 1244, false);
 console.log(library);
 // console.log(getBook('Tufty the Preastest'));
 // displayBook(getBook('Tufty the Preastest'));
-displayLibrary();
 
 
+
+ function removeBook() {
 const buttonsRemoveBook = document.querySelectorAll('.btnRemove');
  console.log(buttonsRemoveBook);
 
@@ -105,6 +134,7 @@ buttonsRemoveBook.forEach(button => {
   button.addEventListener('click', (e) => {
     // console.log("clickedBtnId");
     const clickedBtn = e.currentTarget;
+    console.log(clickedBtn);
 
     const dataset = clickedBtn.dataset; 
     const clickedBtnId = dataset.btnId;
@@ -115,12 +145,53 @@ buttonsRemoveBook.forEach(button => {
     console.log(e.currentTarget);
 
     const bookRemoved = document.querySelector(`[data-id="${clickedBtnId}"]`);
+    
 
+    console.log(myTable);
+   
      
-    myTable.removeChild(bookRemoved);
+    
+     myTable.removeChild(bookRemoved);
+   
      
-    library = library.filter(book => book.id !== clickedBtnId);
+    library = library.filter(book => book.id === clickedBtnId);
+    
 
+     console.log(library);
+  });
+});
+ }
+
+
+ function toggleStatus() {
+    const buttonsToggleStatus = document.querySelectorAll('.btnToggle');
+ console.log(buttonsToggleStatus);
+
+
+buttonsToggleStatus.forEach(button => {
+  button.addEventListener('click', (e) => {
+     
+    const clickedBtn = e.currentTarget;
+
+    const dataset = clickedBtn.dataset; 
+    const clickedBtnId = dataset.readId;
+
+   const toggledBook = getBook(clickedBtnId);
+    toggledBook.toggleStatus();
+      
+     console.log(toggledBook);
+
+       const toggled = document.querySelector(`[data-read="${clickedBtnId}"]`);
+
+     console.log(toggled);
+      toggled.textContent = toggledBook.read;
+        
      
   });
 });
+ }
+
+displayLibrary();
+  
+  toggleStatus();
+  removeBook();
