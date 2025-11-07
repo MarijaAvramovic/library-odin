@@ -1,8 +1,8 @@
-console.log("test");
+// console.log("test");
 
 let library = [];
 const myTable = document.querySelector('#myTable');
-console.log(myTable);
+// console.log(myTable);
 
 function Book(author, title, pages, read) {
     if(!new.target) {
@@ -21,7 +21,7 @@ function addBooktoLibrary(author, title, pages, read) {
 }
 
 function getBook(id) {
-   const mybook = library.filter(book => book.title === id);
+   const mybook = library.filter(book => book.id === id);
     return mybook[0];
 }
 
@@ -44,13 +44,11 @@ function displayBook(book) {
 
         myTable.appendChild(row);
 
-        console.log("ff");
+        // console.log("ff");
 }
 
 function displayLibrary() {
-    library.forEach(book => {
-        
-    });
+    library.forEach(book => displayBook(book));
 }
 
 
@@ -60,5 +58,6 @@ addBooktoLibrary("Bentino Massaro", "Me", 1244, false);
 
 // test
 console.log(library);
-console.log(getBook('Tufty the Preastest'));
-displayBook(getBook('Tufty the Preastest'));
+// console.log(getBook('Tufty the Preastest'));
+// displayBook(getBook('Tufty the Preastest'));
+displayLibrary();
