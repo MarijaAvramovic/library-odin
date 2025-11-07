@@ -1,8 +1,8 @@
 console.log("test");
 
 let library = [];
-const table = document.querySelector('.display-table');
-console.log(table);
+const myTable = document.querySelector('#myTable');
+console.log(myTable);
 
 function Book(author, title, pages, read) {
     if(!new.target) {
@@ -25,7 +25,7 @@ function getBook(id) {
     return mybook[0];
 }
 
-function displayB(book) {
+function displayBook(book) {
     const row = document.createElement('tr');
         const dataAuthor = document.createElement('td');
         const dataTitle = document.createElement('td');
@@ -42,7 +42,7 @@ function displayB(book) {
         row.appendChild(dataPages);
         row.appendChild(dataRead);
 
-        table.appendChild(row);
+        myTable.appendChild(row);
 
         console.log("ff");
 }
@@ -61,4 +61,4 @@ addBooktoLibrary("Bentino Massaro", "Me", 1244, false);
 // test
 console.log(library);
 console.log(getBook('Tufty the Preastest'));
-displayB(getBook('Tufty the Preastest'));
+displayBook(getBook('Tufty the Preastest'));
