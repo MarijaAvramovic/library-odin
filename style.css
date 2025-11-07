@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    min-height: 100vh;
+}
+
+.main{
+    background-color: rgb(194, 194, 185);
+    padding: 1.4rem;
+   
+}
+.aside{
+    background-color: rgb(68, 61, 61);
+    padding: 1.4rem;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #7d7979;
+    padding: 0.8rem;
+    text-align: left;
+}
