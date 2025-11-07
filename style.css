@@ -33,5 +33,7 @@ button{
     background-color: rgb(194, 194, 185);
     padding: 1rem;
     font-size: 1rem;
-     
+}
+.green{
+    background-color: rgb(150, 226, 150);
 }

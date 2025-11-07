@@ -47,7 +47,6 @@ function displayBook(book) {
         const dataTitle = document.createElement('td');
         const dataPages = document.createElement('td');
         const dataRead = document.createElement('td');
-        const dataToggle = document.createElement('td');
         const btnToggle = document.createElement('button');
         const dataRemove = document.createElement('td');
         const btnRemove = document.createElement('button');
@@ -55,9 +54,14 @@ function displayBook(book) {
         dataAuthor.textContent = book.author;
         dataTitle.textContent = book.title;
         dataPages.textContent = book.pages;
-        dataRead.textContent = book.read;
-        dataRead.textContent = book.read;
-        btnToggle.textContent = 'x';
+        dataRead.appendChild(btnToggle);
+        if(book.read == true){
+          btnToggle.textContent = 'Read';
+          btnToggle.classList.add('green');
+        } else{
+          btnToggle.textContent = 'Not Read';
+          btnToggle.classList.add('green');
+        };
         btnRemove.textContent = 'Delete';
 
          
@@ -75,18 +79,13 @@ function displayBook(book) {
         
 
 
-        dataToggle.appendChild(btnToggle);
-
-        row.appendChild(dataToggle);
-       
-
         dataRemove.appendChild(btnRemove);
          
         row.appendChild(dataRemove);
          
         myTable.appendChild(row);
-        toggleStatus();
-  removeBook();
+    
+        removeBook();
         
         // console.log("ff");
          
@@ -165,35 +164,35 @@ buttonsRemoveBook.forEach(button => {
  }
 
 
- function toggleStatus() {
-    const buttonsToggleStatus = document.querySelectorAll('.btnToggle');
- console.log(buttonsToggleStatus);
+//  function toggleStatus() {
+//     const buttonsToggleStatus = document.querySelectorAll('.btnToggle');
+//  console.log(buttonsToggleStatus);
 
 
-buttonsToggleStatus.forEach(button => {
-  button.addEventListener('click', (e) => {
+// buttonsToggleStatus.forEach(button => {
+//   button.addEventListener('click', (e) => {
      
-    const clickedBtn = e.currentTarget;
+//     const clickedBtn = e.currentTarget;
 
-    const dataset = clickedBtn.dataset; 
-    const clickedBtnId = dataset.readId;
+//     const dataset = clickedBtn.dataset; 
+//     const clickedBtnId = dataset.readId;
 
-   const toggledBook = getBook(clickedBtnId);
-    toggledBook.toggleStatus();
+//    const toggledBook = getBook(clickedBtnId);
+//     toggledBook.toggleStatus();
       
-     console.log(toggledBook);
+//      console.log(toggledBook);
 
-       const toggled = document.querySelector(`[data-read="${clickedBtnId}"]`);
+//        const toggled = document.querySelector(`[data-read="${clickedBtnId}"]`);
 
-     console.log(toggled);
-      toggled.textContent = toggledBook.read;
+//      console.log(toggled);
+//       toggled.textContent = toggledBook.read;
         
      
-  });
-});
- }
+//   });
+// });
+//  }
 
 displayLibrary();
   
-  toggleStatus();
+  // toggleStatus();
   removeBook();
