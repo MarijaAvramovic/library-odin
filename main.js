@@ -7,16 +7,27 @@ const myTable = document.querySelector('#myTable');
 
  
 
-function Book(author, title, pages, read) {
-    if(!new.target) {
-        throw Error("You must use the new");
-    }
-    this.id = crypto.randomUUID();
+// function Book(author, title, pages, read) {
+//     if(!new.target) {
+//         throw Error("You must use the new");
+//     }
+//     this.id = crypto.randomUUID();
+//     this.author = author;
+//     this.title = title;
+//     this.pages = pages;
+//     this.read = read;
+// }
+
+class Book {
+  constructor(author, title, pages, read) {
+      this.id = crypto.randomUUID();
     this.author = author;
     this.title = title;
     this.pages = pages;
     this.read = read;
+  }
 }
+
 
 Book.prototype.toggleStatus = function() {
 
