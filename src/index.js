@@ -1,5 +1,38 @@
 // console.log("test");
 import "./styles.css";
+ 
+ 
+
+const fieldAuthor = document.getElementById("author");
+const titleF = document.getElementById("title"); 
+const numOfPagesF = document.getElementById("numOfPages"); 
+
+ 
+
+fieldAuthor.addEventListener("input", () => {
+ if (fieldAuthor.checkValidity()) {
+  fieldAuthor.setCustomValidity("");
+  } else {
+     
+      
+    fieldAuthor.setCustomValidity(" Missing author!");
+  }
+
+});
+ 
+ 
+function validateInput(input){
+if (input.validity.valueMissing) {
+    
+    input.setCustomValidity(" Missing author!");
+  } else {
+    input.setCustomValidity("");
+  }
+
+}
+
+
+
 
 let library = [];
 const myTable = document.querySelector('#myTable');
